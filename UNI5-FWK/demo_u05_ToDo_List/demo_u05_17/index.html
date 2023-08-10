@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    
+    
+    <!-- Diapositiva 21
+         Demo u05 - 17
+         Se utiliza vue@2.0.3
+    -->
+    <div id="app">
+        {{ titulo }}
+
+        <br><br>
+        <label for="">
+            Nueva Tarea
+        </label>
+       <input type="text" 
+              placeholder="Nombre de la Tarea...." 
+              v-model="nuevaTarea"
+              @keyup.enter="agregarTarea()">
+
+        <a href="#" @click="agregarTarea()">Agregar</a>
+        <hr>
+        <span :class="{tachada: true}">
+            Nuestra nueva tarea será: <b>{{ nuevaTarea }}</b>
+        </span>
+
+        <hr>
+
+       
+        <ul v-for="(t, indice) in mistareas">
+            <li>
+                <div :class="{tachada: t.terminada}">
+                {{ indice}} - {{t.nombre}} 
+                </div>
+                <a href="#" @click="t.terminada=!t.terminada">Terminada</a>
+                <a href="#" @click="eliminarTarea(indice)">Eliminar</a>
+                <a href="#" @click="editarTarea(indice, 'Cambiar el Nombre')">Editar</a>
+            </li>
+        </ul>
+
+        <hr>
+        {{ titulo }} | Comsión "B" @ 2021
+    </div>
+
+    <script src="js/app.js"></script>
+    
+    
+    <!--
+        <div id=#app2>
+    
+        </div>
+        <script src="js/app2.js"></script>
+    -->
+</body>
+</html>
